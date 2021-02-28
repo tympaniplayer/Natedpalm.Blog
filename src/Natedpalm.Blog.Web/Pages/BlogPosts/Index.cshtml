@@ -1,0 +1,13 @@
+@page
+@model Natedpalm.Blog.Web.Pages.BlogPosts.IndexModel
+
+<h2>Blog Posts</h2>
+<a asp-page="./create">Create New</a>
+<ul>
+    @foreach (var post in Model.BlogPosts)
+    {
+        <li>
+            <a asp-asp-page="./" asp-route-id="@post.Id">@post.Title</a>
+        </li>
+    }
+</ul>

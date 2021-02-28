@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Natedpalm.Blog.Web
 {
@@ -21,7 +23,8 @@ namespace Natedpalm.Blog.Web
                 try
                 {
                     var context = services.GetRequiredService<AppDbContext>();
-//                    context.Database.Migrate();
+                    var migrator = context.Database.GetService<IMigrator>();
+                    migrator.Migrate();
                     context.Database.EnsureCreated();
                     SeedData.Initialize(services);
                 }

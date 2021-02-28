@@ -22,8 +22,14 @@ namespace Natedpalm.Blog.Infrastructure.Data
         {
             _mediator = mediator;
         }
+        internal AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+
+        }
 
         public DbSet<ToDoItem> ToDoItems { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,7 +46,10 @@ namespace Natedpalm.Blog.Infrastructure.Data
             int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
             // ignore events if no dispatcher provided
-            if (_mediator == null) return result;
+            if (_mediator == null)
+            {
+                return result;
+            }
 
             // dispatch events only if save was successful
             var entitiesWithEvents = ChangeTracker.Entries<BaseEntity>()

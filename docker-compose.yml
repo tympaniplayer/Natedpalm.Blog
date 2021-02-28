@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: iheartdogs123!
+    volumes:
+      - /opt/data/mysql:/var/lib/mysql
+    networks:
+      - default
+
+  natedpalm:
+    image: natedpalm:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - db:db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - 5000:5000
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports: 
+      - 8000:80
+    environment:
+      MYSQL_ROOT_PASSWORD: iheartdogs123!

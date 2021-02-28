@@ -9,7 +9,6 @@ namespace Natedpalm.Blog.Core.Entities
         public string Title { get; set; } = string.Empty;
         public string Author { get; set; } = string.Empty;
         public DateTime PublishDate { get; set; }
-
-        public string PostContent {get; set;}
+        public string PostContent { get; set; }
     }
 }

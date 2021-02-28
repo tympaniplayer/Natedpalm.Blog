@@ -1,0 +1,8 @@
+@page "{id:int}"
+@model Natedpalm.Blog.Web.Pages.BlogPosts.BlogPostModel
+
+<h1>@Model.BlogPost.Title</h1>
+<h3>@Model.BlogPost.Author</h3>
+<br />
+
+@Html.Raw(@Model.RawHtml);

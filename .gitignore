@@ -260,4 +260,6 @@ paket-files/
 DeploymentSettings.props
 Directory.Build.props
 Directory.Build.targets
-Packages.props
+Packages.propSharedKernels
+
+mono_crash*
