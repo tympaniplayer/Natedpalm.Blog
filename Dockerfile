@@ -27,6 +27,11 @@ WORKDIR /DockerSource/src/Natedpalm.Blog.Web
 RUN dotnet publish -c Release -o /app
 
 FROM base as final
+RUN apt update && \
+    apt install unzip && \
+    apt install curl -y && \
+    curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l /vsdbg
+RUN apt install procps -y
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Natedpalm.Blog.Web.dll"]

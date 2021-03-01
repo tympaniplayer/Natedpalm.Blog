@@ -6,14 +6,14 @@ using Natedpalm.SharedKernel.Interfaces;
 
 namespace Natedpalm.Blog.Web.Pages.BlogPosts
 {
-    public class BlogPostModel : PageModel
+    public class PostModel : PageModel
     {
         private IRepository _repository;
         private Markdown _markDownRenderer;
         public BlogPost BlogPost { get; set; }
         public string RawHtml { get; set; }
 
-        public BlogPostModel(IRepository repository)
+        public PostModel(IRepository repository)
         {
             _repository = repository;
             _markDownRenderer = new Markdown();

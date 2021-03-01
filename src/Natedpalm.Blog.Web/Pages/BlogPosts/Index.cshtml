@@ -7,7 +7,7 @@
     @foreach (var post in Model.BlogPosts)
     {
         <li>
-            <a asp-asp-page="./" asp-route-id="@post.Id">@post.Title</a>
+            <a asp-asp-page="./Post" asp-route-id="@post.Id">@post.Title</a>
         </li>
     }
 </ul>

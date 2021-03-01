@@ -8,7 +8,7 @@ namespace Natedpalm.Blog.Web
     {
        public Map()
        {
-           CreateMap<BlogPost, BlogPostDTO>(); 
+           CreateMap<BlogPost, BlogPostDTO>().ReverseMap();
        }
     }
 }
